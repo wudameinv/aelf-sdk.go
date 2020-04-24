@@ -11,15 +11,10 @@ steps:
     command: 'get'
     arguments: '-d'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
-- task: Go@0
-  inputs:
-    command: 'build'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
+# - task: Go@0
+#   inputs:
+#     command: 'build'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)'
 - script: |
-    go build -v client/
-    go build -v dto/
-    go build -v model/
-    go build -v utils/
-    go build -v protobuf/generated/
-  workingDirectory: '$(modulePath)'
+    bash build.sh
   displayName: 'Get dependencies, then build'
