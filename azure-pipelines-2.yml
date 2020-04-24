@@ -6,6 +6,7 @@ steps:
 - task: GoTool@0
   inputs:
     version: '1.13.5'
+- script: cd scripts/aelf-node && bash start.sh
 # - task: Go@0
 #   inputs:
 #     command: 'get'
