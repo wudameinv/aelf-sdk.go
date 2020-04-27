@@ -17,11 +17,6 @@ jobs:
       version: 3.1.101
   - powershell: ./scripts/aelf-node/start-window.ps1
     displayName: 'Test'
-  - powershell: go test test\block_test.go
-  # - task: Go@0
-  #   inputs:
-  #     command: 'test'
-  #     workingDirectory: 'D:\a\1\s\test'
 - job: build_all_linux
   displayName: Build all tasks (Linux)
   pool:
