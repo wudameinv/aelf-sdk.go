@@ -11,15 +11,6 @@ steps:
   inputs:
     version: '1.13.5'
 - script: cd scripts/aelf-node && bash start.sh
-# - task: Go@0
-#   inputs:
-#     command: 'get'
-#     arguments: '-d'
-#     workingDirectory: '$(System.DefaultWorkingDirectory)'
-# - task: Go@0
-#   inputs:
-#     command: 'build'
-#     workingDirectory: '$(System.DefaultWorkingDirectory)'
 - script: |
     bash build.sh
-  displayName: 'Get dependencies, then build'
+  displayName: 'test'
