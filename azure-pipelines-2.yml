@@ -13,6 +13,7 @@ jobs:
       version: 3.1.101
   - powershell: ./scripts/aelf-node/start-window.ps1
     displayName: 'Test'
+  - powershell: go test test\block_test.go
   # - task: Go@0
   #   inputs:
   #     command: 'test'
