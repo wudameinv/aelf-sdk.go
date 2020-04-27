@@ -28,6 +28,21 @@ jobs:
     inputs:
       version: '1.13.5'
   - script: cd scripts/aelf-node && bash start.sh
-  - script: |
-      bash build.sh
+  - script: bash build.sh
+    displayName: 'Test'
+# All tasks on macOS
+- job: build_all_macos
+  displayName: Build all tasks (macos)
+  pool:
+    vmImage: macos-latest
+  steps:
+  - task: GoTool@0
+    inputs:
+      version: '1.13.5'
+  - task: DotNetCoreInstaller@0
+    inputs:
+      version: '3.1.101'
+  - script: cd scripts/aelf-node && bash start-mac.sh
+    displayName: 'Deploy a full node'
+  - script: bash build.sh
     displayName: 'Test'
