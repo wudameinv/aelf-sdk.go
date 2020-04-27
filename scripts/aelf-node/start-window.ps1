@@ -12,15 +12,16 @@
 # $job2 = Start-Job -ScriptBlock { cd D:\a\1\s\aelf\aelf; dotnet AElf.Launcher.dll; } 
 # sleep 60
 cd D:\a\1\s
-cd client/ 
-go build
-cd ../dto/
-go build
-cd ../model/
-go build
-cd ../utils/
-go build
-cd ../protobuf/generated/
-go build
-cd ../../test
-go test
+.\build.ps1
+# cd client/ 
+# go build
+# cd ../dto/
+# go build
+# cd ../model/
+# go build
+# cd ../utils/
+# go build
+# cd ../protobuf/generated/
+# go build
+# cd ../../test
+# go test
