@@ -12,8 +12,6 @@ jobs:
     inputs:
       version: 3.1.101
   - powershell: ./scripts/aelf-node/start-window.ps1
-    displayName: 'deploy a full node'
-  - powershell: ./build.ps1
     displayName: 'Test'
 
 - job: build_all_linux
