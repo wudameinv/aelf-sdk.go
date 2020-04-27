@@ -22,5 +22,5 @@ cd ../utils/
 go build
 cd ../protobuf/generated/
 go build
-# cd ../../test/
-# go test
+cd ../../test
+go test block_test.go
