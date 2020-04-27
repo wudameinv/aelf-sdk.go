@@ -1,4 +1,20 @@
 jobs:
+- job: build_all_window
+  displayName: Build all tasks (window)
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - task: GoTool@0
+    inputs:
+      version: '1.13.5'
+  - task: UseDotNet@2
+    displayName: 'Install .NET Core SDK'
+    inputs:
+      version: 3.1.101
+  - powershell: ./scripts/aelf-node/start-window.ps1
+    displayName: 'deploy a full node'
+  - powershell: ./build.ps1
+    displayName: 'Test'
 
 - job: build_all_linux
   displayName: Build all tasks (Linux)
@@ -16,4 +32,4 @@ jobs:
   - script: cd scripts/aelf-node && bash start.sh
   - script: |
       bash build.sh
-    displayName: 'test'
+    displayName: 'Test'
