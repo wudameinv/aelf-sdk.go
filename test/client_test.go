@@ -18,7 +18,7 @@ import (
 )
 
 var aelf = client.AElfClient{
-	Host:       "http://127.0.0.1:8001",
+	Host:       "http://127.0.0.1:8000",
 	Version:    "1.0",
 	PrivateKey: "680afd630d82ae5c97942c4141d60b8a9fedfa5b2864fca84072c17ee1f72d9d",
 }
