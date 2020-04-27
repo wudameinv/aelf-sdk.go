@@ -9,4 +9,5 @@ go build
 cd ../protobuf/generated/
 go build
 cd ../../test/
+go build
 go test
