@@ -11,7 +11,7 @@
 # cd aelf/aelf
 # $job2 = Start-Job -ScriptBlock { cd D:\a\1\s\aelf\aelf; dotnet AElf.Launcher.dll; } 
 # sleep 60
-go env -w GOPROXY=https://goproxy.cn,direct
+go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
 cd D:\a\1\s
 cd client/ 
 go build
