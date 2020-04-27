@@ -23,4 +23,4 @@ go build
 cd ../protobuf/generated/
 go build
 cd ../../test
-C:\hostedtoolcache\windows\go\1.13.5\x64\bin\go.exe test
+go test
