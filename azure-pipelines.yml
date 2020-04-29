@@ -1,15 +1,66 @@
-services:
-  redis:
-    image: redis
-    ports:
-      - 6379:6379
-pool:
-  vmImage: 'Ubuntu 16.04'
+# services:
+#   redis:
+#     image: redis
+#     ports:
+#       - 6379:6379
+# pool:
+#   vmImage: 'Ubuntu 16.04'
 
-variables:
-  imageName: 'aelf-sdk.go:$(build.buildId)'
+# variables:
+#   imageName: 'aelf-sdk.go:$(build.buildId)'
 
-steps:
+# steps:
+#   - script: cd scripts/aelf-node && bash start.sh
+#   - script: docker build -f Dockerfile -t $(imageName) .
+#     displayName: 'docker build and test'
+jobs:
+- job: build_all_window
+  displayName: Build all tasks (window)
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - task: GoTool@0
+    inputs:
+      version: '1.13.5'
+  - task: Go@0
+    inputs:
+        command: 'build'
+        workingDirectory: 'D:\a\1\s\*\'
+  - task: UseDotNet@2
+    displayName: 'Install .NET Core SDK'
+    inputs:
+      version: 3.1.101
+  - powershell: ./scripts/aelf-node/start-window.ps1
+    displayName: 'Test'
+- job: build_all_linux
+  displayName: Build all tasks (Linux)
+  pool:
+    vmImage: 'ubuntu-latest'
+  services:
+    redis:
+      image: redis
+      ports:
+        - 6379:6379
+  steps:
+  - task: GoTool@0
+    inputs:
+      version: '1.13.5'
   - script: cd scripts/aelf-node && bash start.sh
-  - script: docker build -f Dockerfile -t $(imageName) .
-    displayName: 'docker build and test'
+  - script: bash build.sh
+    displayName: 'Test'
+# All tasks on macOS
+- job: build_all_macos
+  displayName: Build all tasks (macos)
+  pool:
+    vmImage: macos-latest
+  steps:
+  - task: GoTool@0
+    inputs:
+      version: '1.13.5'
+  - task: DotNetCoreInstaller@0
+    inputs:
+      version: '3.1.101'
+  - script: cd scripts/aelf-node && bash start-mac.sh
+    displayName: 'Deploy a full node'
+  - script: bash build.sh
+    displayName: 'Test'
