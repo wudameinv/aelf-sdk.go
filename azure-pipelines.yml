@@ -22,10 +22,6 @@ jobs:
   - task: GoTool@0
     inputs:
       version: '1.13.5'
-  - task: Go@0
-    inputs:
-        command: 'build'
-        workingDirectory: 'D:\a\1\s\*\'
   - task: UseDotNet@2
     displayName: 'Install .NET Core SDK'
     inputs:
